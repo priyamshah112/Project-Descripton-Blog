@@ -114,6 +114,16 @@ MIDDLEWARE = [
 ]
 
 INSTALLED_APPS = [
+    
+    'aldryn_apphooks_config',
+    'aldryn_categories',
+    'aldryn_common',
+    'aldryn_newsblog',
+    'aldryn_people',
+    'aldryn_translation_tools',
+    'parler',
+    'sortedm2m',
+    'taggit',    
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -194,5 +204,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
+    'easy_thumbnails.processors.filters',
+    'easy_thumbnails.processors.background',
 )
