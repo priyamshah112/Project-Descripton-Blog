@@ -178,6 +178,8 @@ CMS_TEMPLATES = (
     ## Customize this
     ('fullwidth.html', 'Fullwidth'),
     ('base.html', 'base'),
+    ('about.html', 'about'),
+    ('blog.html', 'blog'),
 )
 
 CMS_PERMISSION = True

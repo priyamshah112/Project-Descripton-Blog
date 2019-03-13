@@ -1,15 +1,19 @@
 {% load staticfiles i18n cms_tags sekizai_tags menu_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 
   <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="{% page_attribute 'meta_description' %}">
     <meta name="author" content="">
 
-    <title>{% page_attribute "page_title" %}</title>
+    <title>
+      {% block title %}
+        {% page_attribute "page_title" %} - {{ request.site.name }}
+      {% endblock title %}
+    </title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -45,7 +49,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">{{ request.site.name }}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -61,20 +65,23 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+    {% block header %}
+    <!-- Page Header -->
+    {% placeholder header or %}
+    <header class="masthead" style="background-image: url('{% static 'img/about-bg.jpg' %}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <div class="page-heading">
+              <h1>{% page_attribute "page_title" %}</h1>
             </div>
           </div>
         </div>
       </div>
     </header>
-
+    {% endplaceholder %}
+    {% endblock %}
     <!-- Main Content -->
     <div class="container">
       <div class="row">
@@ -173,7 +180,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+            <p class="copyright text-muted">Copyright &copy; {{ request.site.name }} {% now "Y" %}</p>
           </div>
         </div>
       </div>
