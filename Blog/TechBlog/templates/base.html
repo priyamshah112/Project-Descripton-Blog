@@ -57,7 +57,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             {% with dropdown=True %}
-              {% show_menu 0 100 100 100 "includes/menu.html" %}
+              {% show_menu 0 0 0 0 "includes/menu.html" %}
             {% endwith %}
           </ul>
         </div>
@@ -148,7 +148,7 @@
     </div>
 
     <hr>
-
+{% block content %}{% endblock content %}
     <!-- Footer -->
     <footer>
       <div class="container">
